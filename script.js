@@ -198,3 +198,16 @@ function checkUserInput() {
     handleCorrectSequence();
   }
 }
+
+function handleIncorrectMove(){
+  
+  updateGameMessage("You lost try agin")
+  level = 1;
+  sequence = [];
+
+  generateUserAndLevel(username.value, level);
+  userClicks = [];
+  setTimeout(generateHighlight,3000)
+  
+
+}
