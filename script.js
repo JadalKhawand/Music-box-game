@@ -211,3 +211,16 @@ function handleIncorrectMove(){
   
 
 }
+
+
+
+
+
+function handleCorrectSequence(){
+  generateWinningMessage()
+  level++
+  generateUserAndLevel(username.value, level);
+    userClicks = []; 
+    setTimeout(generateHighlight,1000)
+  
+  }
