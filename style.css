@@ -1,7 +1,6 @@
 
 *{
-  font-family: 'Poppins', sans-serif;
-font-family: 'Roboto', sans-serif;
+font-family: 'ArcadeClassic', sans-serif;
 box-sizing: border-box;
 margin: 0;
 padding: 0;
@@ -14,6 +13,7 @@ body{
   height: 100vh;
   overflow: hidden;
   background-color: rgb(39, 38, 38);
+  user-select: none;
 }
 
 .game-container{
@@ -35,21 +35,21 @@ body{
   border: 1px solid black;
 }
 .greenBox{
-  background-color: green;
+  background-color: rgb(42, 126, 42);
 }
 .greenBox:hover{
   cursor: pointer;
   background-color: darkgreen;
 }
 .redBox{
-  background-color: red;
+  background-color: rgb(214, 78, 78);
 }
 .redBox:hover{
   cursor: pointer;
   background-color: darkred;
 }
 .yellowBox{
-  background-color: yellow;
+  background-color: rgb(231, 231, 94);
 }
 .yellowBox:hover{
   cursor: pointer;
@@ -57,7 +57,7 @@ body{
 
 }
 .blueBox{
-  background-color: blue;
+  background-color: rgb(69, 69, 238);
 }
 .blueBox:hover{
   cursor: pointer;
@@ -91,4 +91,23 @@ body{
 .Start:hover{
   cursor: pointer;
   color: darkgreen;
+}
+
+.highlighted{
+  border: 5px solid red;
+}
+.winning{
+  position: fixed;
+  z-index: 1;
+  top: 320px;
+  left: 620px;
+  width: 300px;
+  height: 50px;
+  overflow: hidden;
+  
+  
+}
+.winning h1{
+  font-size: 40px;
+  color: green;
 }

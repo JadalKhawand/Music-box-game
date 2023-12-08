@@ -6,11 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Music Box</title>
 
@@ -19,21 +15,28 @@
 <body class="relative">
   <div id="UserModal" class="modal flex flex-col justify-center items-center">
     <div class="flex flex-col modal_content gap-5 ">
-        <h2 class="text-center">Please enter your name </h2>
-        <div class="userEntry w-full">
-          <input id="user_entry" placeholder="user here..."
-                class="w-full"></input>
-              </div>
-    </div>
-   </div>
-  
-<div class="level absolute top-16 right-48">
+      <h2 class="text-center text-2xl">Please &nbsp; enter &nbsp; your &nbsp; name</h2> 
+      <div class="userEntry w-full">
+        <input id="user_entry" placeholder="enter  username  here..." class="w-full"></input>
+        <div class="submit flex justify-end">
+          <button class="enter" type="button">Submit</button>
+        </div>
 
-</div>
+      </div>
+    </div>
+  </div>
+  <div class="winning text-green flex justify-center items-center">
+    
+  </div>
+
+  <div class="level absolute top-16 right-36">
+
+  </div>
 
   <div class="container mb-16 flex justify-center items-center flex-col gap-10 jsutify-around">
     <div class="flex justify-center">
       <h1 class="Start text-4xl mt-16">Start!</h1>
+      <!-- <h1 class="Start text-4xl mt-16 hidden">...</h1> -->
     </div>
     <div class="game-container">
     </div>
