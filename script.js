@@ -178,3 +178,23 @@ function generateInactiveGame() {
 function updateGameMessage(message) {
   document.querySelector(".Start").innerHTML = message;
 }
+
+function handleBoxClick(boxType){
+  userClicks.push(boxType)
+  checkUserInput()
+}
+
+function checkUserInput() {
+  for (let i = 0; i < userClicks.length; i++) {
+    if (userClicks[i] !== sequence[i]) {
+    
+      handleIncorrectMove();
+      return; 
+    }
+  }
+
+  // If the loop completes, the user's input matches the sequence
+  if (userClicks.length === sequence.length) {
+    handleCorrectSequence();
+  }
+}
