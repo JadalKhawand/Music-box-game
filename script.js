@@ -7,6 +7,7 @@ const boxes = ["greenBox", "redBox", "yellowBox", "blueBox"];
 let sequence = [];
 let userClicks = [];
 let level = 1
+let yellowSound = document.getElementById("yellowSound")
 
 let enterGame = document.querySelector(".enter");
 enterGame.addEventListener("click", function () {
@@ -122,10 +123,7 @@ function highlightBoxesInSequence(index, level) {
       element.classList.remove("highlighted");
       highlightBoxesInSequence(index + 1, level);
     }, 1000);  
-  } else {
-    
-    allowUserClick();
-  }
+  } 
 }
 
 function highlightBox(boxType) {
@@ -180,8 +178,25 @@ function updateGameMessage(message) {
 }
 
 function handleBoxClick(boxType){
+
+  if(boxType == "greenBox"){
+    playGreenSound()
+  }
+  if(boxType == "yellowBox")
+  {
+    playYellowSound()
+  }
+  if(boxType == "redBox"){
+    playRedSound()
+  }
+  if(boxType == "blueBox"){
+    playBlueSound()
+  }
   userClicks.push(boxType)
   checkUserInput()
+}
+function playYellowSound(){
+  yellowSound.play()
 }
 
 function checkUserInput() {
