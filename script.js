@@ -11,6 +11,7 @@ let yellowSound = document.getElementById("yellowSound")
 let blueSound = document.getElementById("blueSound")
 let greenSound = document.getElementById("greenSound")
 let redSound = document.getElementById("redSound")
+let losingSound = document.getElementById("losingSound")
 
 let enterGame = document.querySelector(".enter");
 enterGame.addEventListener("click", function () {
@@ -213,6 +214,10 @@ function playRedSound(){
   redSound.play()
 }
 
+function playLosingSound(){
+  losingSound.play()
+}
+
 function checkUserInput() {
   for (let i = 0; i < userClicks.length; i++) {
     if (userClicks[i] !== sequence[i]) {
@@ -229,7 +234,7 @@ function checkUserInput() {
 }
 
 function handleIncorrectMove(){
-  
+  playLosingSound()
   updateGameMessage("You lost try agin")
   level = 1;
   sequence = [];
