@@ -29,6 +29,7 @@ function generateWinningMessage() {
   winning.innerHTML = "";
   let win = `<h1 class="text-green">You won level ${level}</h1>`;
   winning.innerHTML += win;
+  triggerConfetti()
   winning.style.display = "block"; 
   setTimeout(() => {
     winning.style.display = "none";
@@ -60,8 +61,9 @@ function startGame() {
 
 }
 function generateHighlight() {
-  updateGameMessage(",,,")
-  let lastBox = sequence[sequence.length - 1];
+  updateGameMessage(",,,");
+  let lastBoxIndex = sequence.length - 1;
+  let lastBox = lastBoxIndex >= 0 ? sequence[lastBoxIndex] : null;
   let newBox;
 
   do {
@@ -71,8 +73,9 @@ function generateHighlight() {
 
   sequence.push(newBox);
 
-  highlightBoxesInSequence(0, level);
+  highlightBoxesInSequence(lastBoxIndex, level);
 }
+
 
 function generateActiveGame() {
 
@@ -114,7 +117,9 @@ function generateActiveGame() {
     element.addEventListener('click', () => handleBoxClick(boxType));
   });
 }
-function highlightBoxesInSequence(index, level) {
+function highlightBoxesInSequence(lastIndex, level) {
+  index = lastIndex + 1
+  
   if (index < level) {
     const boxType = sequence[index];
     const element = document.querySelector(`.${boxType}`);
@@ -125,7 +130,7 @@ function highlightBoxesInSequence(index, level) {
     
     setTimeout(() => {
       element.classList.remove("highlighted");
-      highlightBoxesInSequence(index + 1, level);
+      highlightBoxesInSequence(index, level);
     }, 1000);  
   } 
 }
@@ -257,4 +262,21 @@ function handleCorrectSequence(){
     userClicks = []; 
     setTimeout(generateHighlight,1000)
   
+  }
+
+  function triggerConfetti() {
+    // Configure confetti options
+    const config = {
+      spread: 180,
+      startVelocity: 40,
+      elementCount: 5,
+      dragFriction: 0.12,
+      duration: 3000,
+      stagger: 3,
+      colors: ['#FFD700', '#FF4500', '#00FF00', '#1E90FF'],
+      
+    };
+  
+    // Trigger confetti explosion
+    confetti(config);
   }
