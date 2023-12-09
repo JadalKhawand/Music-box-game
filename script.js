@@ -151,30 +151,22 @@ function generateInactiveGame() {
   gameContainer.innerHTML = "";
   let game = `
   <div class="boxes flex flex-wrap flex-row gap-10 items-center justify-center">
-  <div class=" flex justify-center items-center mt-6 w-36 h-36 rounded-3xl bg-black">
-    <div class="greenBox-inner">
-      <h1 class = "text-black">Green 0</h1>
-    </div>
+  <div class=" flex justify-center items-center mt-6 w-36 h-36 rounded-3xl bg-green-600">
+    
 
   </div>
-  <div class=" flex justify-center items-center mt-6 w-36 h-36 rounded-3xl bg-black">
+  <div class=" flex justify-center items-center mt-6 w-36 h-36 rounded-3xl bg-red-600">
 
-    <div class="redBox-inner">
-      <h1 class = "text-black">Red 1</h1>
-    </div>
+    
   </div>
-  <div class=" flex justify-center items-center mb-6 w-36 h-36 rounded-3xl bg-black">
+  <div class=" flex justify-center items-center mb-6 w-36 h-36 rounded-3xl bg-yellow-600">
 
-    <div class="yellowBox-inner">
-      <h1 class = "text-black">Yellow 2</h1>
-    </div>
+    
 
   </div>
-  <div class=" flex justify-center items-center mb-6 w-36 h-36 rounded-3xl bg-black">
+  <div class=" flex justify-center items-center mb-6 w-36 h-36 rounded-3xl bg-blue-600">
 
-    <div class="blueBox-inner">
-      <h1 class = "text-black">Blue 3</h1>
-    </div>
+    
 
   </div>
 </div>`;

@@ -19,13 +19,13 @@ body{
 .game-container{
   width: 400px;
   height: 400px;
-  border: 1px solid red;
+
   border-radius: 30px;
 }
 .game-board{
   width: 400px;
   height: 400px;
-  border: 1px solid red;
+
   padding: 40px;
 }
 .greenBox, .redBox, .yellowBox, .blueBox{
@@ -70,7 +70,8 @@ body{
 .boxes{
   height:400px;
   padding: 8px;
-  background-color: white;
+  background-color: rgb(202, 220, 202);
+  border-radius: 30px;
 }
 
 .modal {
