@@ -10,6 +10,7 @@ let level = 1
 let yellowSound = document.getElementById("yellowSound")
 let blueSound = document.getElementById("blueSound")
 let greenSound = document.getElementById("greenSound")
+let redSound = document.getElementById("redSound")
 
 let enterGame = document.querySelector(".enter");
 enterGame.addEventListener("click", function () {
@@ -207,6 +208,9 @@ function playBlueSound(){
 }
 function playGreenSound(){
   greenSound.play()
+}
+function playRedSound(){
+  redSound.play()
 }
 
 function checkUserInput() {
