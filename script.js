@@ -25,6 +25,8 @@ if (storedUsername) {
   });
 }
 
+let gameStarted = false
+
 let userAndLevel = document.querySelector(".level");
 let start = document.querySelector(".Start");
 
@@ -85,11 +87,16 @@ function generateUserAndLevel(usernameValue,level) {
 start.addEventListener("click", startGame);
 
 function startGame() {
+if(!gameStarted)
+{
+  gameStarted = true;
   generateActiveGame();
   updateGameMessage("...");
   generateHighlight()
   generateUserAndLevel(username.value, level);
   startTimer();
+}
+  
 
 }
 function generateHighlight() {
