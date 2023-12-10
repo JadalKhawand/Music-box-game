@@ -1,17 +1,45 @@
+let level = 1
+let username = document.querySelector("#user_entry");
+
+const storedUsername = localStorage.getItem('username');
+
+if (storedUsername) {
+  // If the user name is stored, hide the modal and proceed with the game
+  document.querySelector("#UserModal").classList.add("hidden");
+  // Additional logic if needed when the user name is already stored
+} else {
+  // If the user name is not stored, show the modal and handle the name entry
+  document.querySelector("#UserModal").classList.remove("hidden");
+
+  let enterGame = document.querySelector(".enter");
+  enterGame.addEventListener("click", function () {
+    document.querySelector("#UserModal").classList.add("hidden");
+    generateUserAndLevel(username.value);
+  });
+
+  username.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      document.querySelector("#UserModal").classList.add("hidden");
+      generateUserAndLevel(username.value, level);
+    }
+  });
+}
+
 let userAndLevel = document.querySelector(".level");
 let start = document.querySelector(".Start");
-let username = document.querySelector("#user_entry");
+
 let gameContainer = document.querySelector(".game-container");
 let winning = document.querySelector(".winning")
 const boxes = ["greenBox", "redBox", "yellowBox", "blueBox"];
 let sequence = [];
 let userClicks = [];
-let level = 1
+
 let yellowSound = document.getElementById("yellowSound")
 let blueSound = document.getElementById("blueSound")
 let greenSound = document.getElementById("greenSound")
 let redSound = document.getElementById("redSound")
 let losingSound = document.getElementById("losingSound")
+let timeLimit = 3;
 
 let enterGame = document.querySelector(".enter");
 enterGame.addEventListener("click", function () {
@@ -48,8 +76,11 @@ function generateUserAndLevel(usernameValue,level) {
   let text = `
   <h1 class="text-3xl text-green-600">User: ${usernameValue} </h1>
   <h1 class="text-3xl text-green-600">Level: ${level}</h1>
+  <h2 class="text-xl text-red-600">Time Limit:${timeLimit} seconds</h2>
   `;
   userAndLevel.innerHTML += text;
+  localStorage.setItem('username', usernameValue);
+  localStorage.setItem('level', level.toString());
 }
 start.addEventListener("click", startGame);
 
@@ -58,6 +89,7 @@ function startGame() {
   updateGameMessage("...");
   generateHighlight()
   generateUserAndLevel(username.value, level);
+  startTimer();
 
 }
 function generateHighlight() {
@@ -235,10 +267,14 @@ function handleIncorrectMove(){
   updateGameMessage("You lost try agin")
   level = 1;
   sequence = [];
-
+  timeLimit = 6;
   generateUserAndLevel(username.value, level);
   userClicks = [];
+  
+  
   setTimeout(generateHighlight,3000)
+  
+  localStorage.setItem('level', level.toString());
   
 
 }
@@ -250,10 +286,11 @@ function handleIncorrectMove(){
 function handleCorrectSequence(){
   generateWinningMessage()
   level++
+  timeLimit = 3 + level;
   generateUserAndLevel(username.value, level);
     userClicks = []; 
     setTimeout(generateHighlight,1000)
-  
+  localStorage.setItem('level', level.toString())
   }
 
   function triggerConfetti() {
@@ -272,3 +309,18 @@ function handleCorrectSequence(){
     // Trigger confetti explosion
     confetti(config);
   }
+
+  function startTimer() {
+    const timerInterval = setInterval(() => {
+      timeLimit--;
+  
+      if (timeLimit <= 0) {
+        clearInterval(timerInterval);
+        handleIncorrectMove(); 
+        startTimer()
+      } else {
+        generateUserAndLevel(username.value, level);
+      }
+    }, 1000);
+  }
+  
